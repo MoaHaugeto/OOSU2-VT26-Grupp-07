@@ -20,5 +20,9 @@ namespace OOSU2_VT26_Grupp_07
         {
             InitializeComponent();
         }
+        private void loggaInButton_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show($"Hej! {användarnamnTexbox.Text}");
+        }
     }
 }

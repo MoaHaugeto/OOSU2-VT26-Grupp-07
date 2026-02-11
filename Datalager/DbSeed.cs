@@ -4,14 +4,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 
 namespace OOSU2_VT26_Grupp_07.Datalager
 {
     public static class DbSeed
     {
-        public static void Seed(OOPSU2DbContext db)
+        public static void Populate(OOPSU2DbContext db)
         {
-            if (db.Medlemmar.Any()) return;
+            if (db.Medlemmar.Any())
 
             // PERSONAL
             db.Personaler.Add(new Personal { PersonID = 1, Namn = "Sara Lindgren", Roll = "Administratör", Losenord = "Admin123!" });
@@ -35,8 +36,8 @@ namespace OOSU2_VT26_Grupp_07.Datalager
             db.Bokningar.Add(new Bokning { BokningsID = 2, MedlemsID = "M002", ResursID = 2, Datum = "2026-02-02", Starttid = "18:00", Sluttid = "19:00" });
 
             // BETALNINGAR
-            db.Betalningar.Add(new Betalning { BetalningsID = 1, MedlemsID = "M001", Belopp = 250, Status = "Betald" });
-            db.Betalningar.Add(new Betalning { BetalningsID = 2, MedlemsID = "M002", Belopp = 150, Status = "Obetald" });
+            db.Betalningar.Add(new Betalning { BetalningID = 1, MedlemsID = "M001", Belopp = 250, Status = "Betald" });
+            db.Betalningar.Add(new Betalning { BetalningID = 2, MedlemsID = "M002", Belopp = 150, Status = "Obetald" });
 
             // UTRUSTNING
             db.Utrustningar.Add(new Utrustning { InventarieNummer = "U001", ArtikelNamn = "Epson Projektor", Kategori = "Projektor", Skick = "Bra", ResursID = 1 });

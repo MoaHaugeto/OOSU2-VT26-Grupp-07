@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 
 namespace OOSU2_VT26_Grupp_07.Datalager
 {
@@ -23,7 +24,11 @@ namespace OOSU2_VT26_Grupp_07.Datalager
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseSqlServer(
-                "Server=(localdb)\\MSSQLLocalDB;Database=OOPSU2Db;Trusted_Connection=True;"
+                "Server=sqlutb4-db.hb.se,56077;" +
+                "Database=oosu2607;" +
+                "User Id=oosu2607;" +
+                "Password=JGK356;" +
+                "TrustServerCertificate=True;"
             );
         }
     }

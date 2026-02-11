@@ -8,7 +8,7 @@ namespace OOSU2_VT26_Grupp_07.Entiteter
 {
     public class Betalning
     {
-        public int BetalningsID { get; set; }
+        public int BetalningID { get; set; }
         public string MedlemsID { get; set; }
         public string Köpdatum { get; set; }
         public decimal Belopp { get; set; }

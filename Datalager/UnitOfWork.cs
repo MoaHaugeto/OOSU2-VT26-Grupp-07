@@ -13,7 +13,13 @@ namespace OOSU2_VT26_Grupp_07.Datalager
     {
         private readonly OOPSU2DbContext db = new OOPSU2DbContext();
 
-        public 
+        public BetalningRepository BetalningRepository { get; set; } = new BetalningRepository();
+        public BokningRepository BokningRepository { get; set; } =new BokningRepository();
+        public MedlemRepository MedlemRepository { get; set; } = new MedlemRepository();
+
+        public PersonalRepository PersonalRepository { get; set; } = new PersonalRepository();
+        public ResursRepository ResursRepository { get; set; } = new ResursRepository();
+        public UtrustningRepository UtrustningRepository { get; set; } = new UtrustningRepository();
 
 
 

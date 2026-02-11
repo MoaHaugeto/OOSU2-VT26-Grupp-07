@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace OOSU2_VT26_Grupp_07.Datalager
 {
-    class PersonalRepository
+    public class PersonalRepository
     {
     }
 }

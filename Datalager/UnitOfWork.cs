@@ -22,8 +22,17 @@ namespace OOSU2_VT26_Grupp_07.Datalager
         public UtrustningRepository UtrustningRepository { get; set; } = new UtrustningRepository();
 
 
+        public UnitOfWork()
+        {
+            db.Database.EnsureCreated();
+            BokningRepository = new BokningRepository();
 
-        
+        }
+
+        // Tror att vi behöver ta bort dessa "private readonly OOPSU2DbContext db = new OOPSU2DbContext();" från alla repositorys för det går typ emot principerna för unitofwork som vi måste ha med
+        // jag tror också att alla dina metoder du gjort som tex "LäggTillMedlem" kommer att ändras sen när vi gjort alla fönstren och knapptryck som kommer påverka
+
+
         //Unit of work läser från DBContext och sedan skickar till databasen för att sparas
 
 

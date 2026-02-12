@@ -13,7 +13,7 @@ namespace OOSU2_VT26_Grupp_07.Datalager
 
         public List<Bokning> HämtaAllaBokningar()
         {
-            return db.Bokningar.ToList();
+            return db.Bokningar.ToList(); 
         }
 
         public void LäggTillBokning(Bokning bokning)

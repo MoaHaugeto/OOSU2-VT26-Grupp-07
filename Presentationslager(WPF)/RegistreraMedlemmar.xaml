@@ -42,8 +42,11 @@
         <TextBox x:Name="telefonnummerTextBox" Grid.Column="2" Grid.Row="4" Width="200" Margin="5"/>
 
         <TextBlock Grid.Column="1" Grid.Row="5" Text="Medlemskapsnivå" Margin="5" />
-        
-        
+        <!--Här ska vi nog ha en dropdown-box, jämte medlemskapsnivå-->
+
+        <TextBlock Grid.Column="1" Grid.Row="6" Text="Betalningsstatus" Margin="5"/>
+        <!--Här ska vi nog ha en dropdown-box, jämte betalningsstatus-->
+
 
 
 

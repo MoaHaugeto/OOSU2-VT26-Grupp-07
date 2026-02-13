@@ -15,7 +15,10 @@ namespace OOSU2_VT26_Grupp_07.Entiteter
         public int Utrustning { get; set; }
         public string Status { get; set; }
 
-        Utrustning utrustningar = new Utrustning();
-        Bokning bokningar = new Bokning();
+        public ICollection<Utrustning> Utrustningar { get; set; }
+        public ICollection<Bokning> Bokningar { get; set;}
+
+        //Utrustning utrustningar = new Utrustning();
+        //Bokning bokningar = new Bokning();
     }
 }

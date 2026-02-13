@@ -12,8 +12,8 @@ namespace OOSU2_VT26_Grupp_07.Datalager
     {
         public static void Populate(OOPSU2DbContext _db)
         {
-            //if (_db.Medlemmar.Any() || _db.Personaler.Any() || _db.Resurser.Any() || _db.Bokningar.Any() || _db.Betalningar.Any() || _db.Utrustningar.Any())
-               // return;
+            if (_db.Medlemmar.Any() || _db.Personaler.Any() || _db.Resurser.Any() || _db.Bokningar.Any() || _db.Betalningar.Any() || _db.Utrustningar.Any())
+                return;
 
             // PERSONAL
             _db.Personaler.Add(new Personal { Namn = "Sara Lindgren", Roll = "Administratör", Losenord = "Admin123!" });
@@ -40,13 +40,16 @@ namespace OOSU2_VT26_Grupp_07.Datalager
 
             _db.SaveChanges();
 
+            var medlem = _db.Medlemmar.First();
+            var resurs = _db.Resurser.First();
+
             // BOKNINGAR
-            _db.Bokningar.Add(new Bokning { Datum = new DateTime(2026, 2, 1), Starttid = new TimeSpan(10, 0, 0), Sluttid = new TimeSpan(11, 0, 0) });
-            _db.Bokningar.Add(new Bokning { Datum = new DateTime(2026, 2, 2), Starttid = new TimeSpan(18, 0, 0), Sluttid = new TimeSpan(19, 0, 0) });
+            _db.Bokningar.Add(new Bokning { MedlemID =medlem.MedlemID, ResursID = resurs.ResursID, Datum = new DateTime(2026, 2, 1), Starttid = new TimeSpan(10, 0, 0), Sluttid = new TimeSpan(11, 0, 0) });
+            _db.Bokningar.Add(new Bokning { MedlemID = medlem.MedlemID, ResursID = resurs.ResursID, Datum = new DateTime(2026, 2, 2), Starttid = new TimeSpan(18, 0, 0), Sluttid = new TimeSpan(19, 0, 0) });
 
             // BETALNINGAR
-            _db.Betalningar.Add(new Betalning { MedlemID = MedlemID, Belopp = 250, Status = "Betald" });
-            _db.Betalningar.Add(new Betalning { Belopp = 150, Status = "Obetald" });
+            _db.Betalningar.Add(new Betalning { MedlemID = medlem.MedlemID, Belopp = 250, Status = "Betald" });
+            _db.Betalningar.Add(new Betalning { MedlemID = medlem.MedlemID, Belopp = 150, Status = "Obetald" });
 
 
 

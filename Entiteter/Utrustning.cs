@@ -13,5 +13,6 @@ namespace OOSU2_VT26_Grupp_07.Entiteter
         public string Kategori { get; set; }
         public string Skick { get; set; }
         public int ResursID { get; set; }
+        public Resurs Resurs { get; set; }
     }
 }

@@ -13,6 +13,8 @@ namespace OOSU2_VT26_Grupp_07.Entiteter
         public string Roll { get; set; }
         public string Losenord { get; set; }
 
-        public Medlem Medlem { get; set; }
+
+
+        //public Medlem Medlem { get; set; }
     }
 }

@@ -9,25 +9,39 @@ using OOSU2_VT26_Grupp_07.Entiteter;
 
 namespace OOSU2_VT26_Grupp_07.Datalager
 {
-    public class UnitOfWork
+    public class UnitOfWork : IDisposable
     {
-        private readonly OOPSU2DbContext db = new OOPSU2DbContext();
+        private readonly OOPSU2DbContext _db;
 
-        public BetalningRepository BetalningRepository { get; set; } = new BetalningRepository();
-        public BokningRepository BokningRepository { get; set; } =new BokningRepository();
-        public MedlemRepository MedlemRepository { get; set; } = new MedlemRepository();
 
-        public PersonalRepository PersonalRepository { get; set; } = new PersonalRepository();
-        public ResursRepository ResursRepository { get; set; } = new ResursRepository();
-        public UtrustningRepository UtrustningRepository { get; set; } = new UtrustningRepository();
+        public BetalningRepository BetalningRepository { get; }
+        public BokningRepository BokningRepository { get; }
+        public MedlemRepository MedlemRepository { get;}
+
+        public PersonalRepository PersonalRepository { get; } 
+        public ResursRepository ResursRepository { get; }
+        public UtrustningRepository UtrustningRepository { get; } 
 
 
         public UnitOfWork()
         {
-            db.Database.EnsureCreated();
-            BokningRepository = new BokningRepository();
+            _db = new OOPSU2DbContext();
+            _db.Database.EnsureCreated();
+            DbSeed.Populate(_db);
+
+            MedlemRepository = new MedlemRepository(_db);
+            BetalningRepository = new BetalningRepository(_db);
+            BokningRepository = new BokningRepository(_db);
+            PersonalRepository = new PersonalRepository(_db);
+            ResursRepository = new ResursRepository(_db);
+            UtrustningRepository = new UtrustningRepository(_db);
 
         }
+
+        
+
+        public int Save() => _db.SaveChanges();
+        public void Dispose() => _db.Dispose();
 
         // Tror att vi behöver ta bort dessa "private readonly OOPSU2DbContext db = new OOPSU2DbContext();" från alla repositorys för det går typ emot principerna för unitofwork som vi måste ha med
         // jag tror också att alla dina metoder du gjort som tex "LäggTillMedlem" kommer att ändras sen när vi gjort alla fönstren och knapptryck som kommer påverka

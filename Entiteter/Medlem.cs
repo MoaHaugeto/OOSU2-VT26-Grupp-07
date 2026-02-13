@@ -8,7 +8,7 @@ namespace OOSU2_VT26_Grupp_07.Entiteter
 {
     public class Medlem
     {
-        public string MedlemsID { get; set; }
+        public int MedlemID { get; set; }
         public string Namn { get; set; }
         public string Telefonnummer { get; set; }
         public string Email { get; set; }

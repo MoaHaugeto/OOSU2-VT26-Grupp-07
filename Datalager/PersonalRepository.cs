@@ -8,5 +8,14 @@ namespace OOSU2_VT26_Grupp_07.Datalager
 {
     public class PersonalRepository
     {
+
+        private readonly OOPSU2DbContext _db;
+
+        public PersonalRepository(OOPSU2DbContext db)
+        {
+            _db = db;
+        }
+
+
     }
 }

@@ -9,17 +9,20 @@ namespace OOSU2_VT26_Grupp_07.Datalager
 {
     public class MedlemRepository
     {
-        private readonly OOPSU2DbContext db = new OOPSU2DbContext();
+        private readonly OOPSU2DbContext _db;
 
+        public MedlemRepository(OOPSU2DbContext db)
+        {
+            _db = db;
+        }
         public List<Medlem> HämtaAllaMedlemmar()
         {
-            return db.Medlemmar.ToList();
+            return _db.Medlemmar.ToList();
         }
 
         public void LäggTillMedlem(Medlem medlem)
         {
-            db.Medlemmar.Add(medlem);
-            db.SaveChanges();
+            _db.Medlemmar.Add(medlem);
         }
 
         //public void UppdateraMedlem();

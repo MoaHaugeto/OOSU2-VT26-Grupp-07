@@ -9,22 +9,25 @@ namespace OOSU2_VT26_Grupp_07.Datalager
 {
     public class ResursRepository
     {
-        private readonly OOPSU2DbContext db = new OOPSU2DbContext();
+        private readonly OOPSU2DbContext _db;
 
+        public ResursRepository(OOPSU2DbContext db)
+        {
+            _db = db;
+        }
         public List<Resurs> HämtaAllaResurser()
         {
-            return db.Resurser.ToList();
+            return _db.Resurser.ToList();
         }
 
         public void LäggTillResurs(Resurs resurs)
         {
-            db.Resurser.Add(resurs);
-            db.SaveChanges();
+            _db.Resurser.Add(resurs);
         }
 
         public void UppdateraResurs(Resurs uppdateradResurs)
         {
-            var resurs = db.Resurser
+            var resurs = _db.Resurser
                 .FirstOrDefault(r => r.ResursID == uppdateradResurs.ResursID);
 
             if (resurs == null) return;
@@ -34,18 +37,15 @@ namespace OOSU2_VT26_Grupp_07.Datalager
             resurs.Kapacitet = uppdateradResurs.Kapacitet;
             resurs.Status = uppdateradResurs.Status;
 
-            db.SaveChanges();
         }
-
         public void TaBortResurs(int resursID)
         {
-            var resurs = db.Resurser
+            var resurs = _db.Resurser
                 .FirstOrDefault(r => r.ResursID == resursID);
 
             if (resurs == null) return;
 
-            db.Resurser.Remove(resurs);
-            db.SaveChanges();
+            _db.Resurser.Remove(resurs);
         }
     }
 }

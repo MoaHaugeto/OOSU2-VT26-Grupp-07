@@ -32,19 +32,23 @@ namespace OOSU2_VT26_Grupp_07.Datalager
             _db.Resurser.Add(new Resurs { Namn = "B01", Typ = "Skrivbord", Kapacitet = 2, Status = "Tillgänglig" });
             _db.Resurser.Add(new Resurs { Namn = "C01", Typ = "Konferenssal", Kapacitet = 25, Status = "Ej tillgänglig" });
 
-            // BOKNINGAR
-            _db.Bokningar.Add(new Bokning { Datum = new DateTime(2026, 2, 1), Starttid = new TimeSpan(10, 0,0), Sluttid = new TimeSpan(11,0,0)});
-            _db.Bokningar.Add(new Bokning { Datum = new DateTime(2026, 2, 2), Starttid = new TimeSpan(18,0,0), Sluttid = new TimeSpan(19,0,0) });
-
-            // BETALNINGAR
-            _db.Betalningar.Add(new Betalning { Belopp = 250, Status = "Betald" });
-            _db.Betalningar.Add(new Betalning { Belopp = 150, Status = "Obetald" });
-
             // UTRUSTNING
-            _db.Utrustningar.Add(new Utrustning { ArtikelNamn = "Epson Projektor", Kategori = "Projektor", Skick = "Bra"});
+            _db.Utrustningar.Add(new Utrustning { ArtikelNamn = "Epson Projektor", Kategori = "Projektor", Skick = "Bra" });
             _db.Utrustningar.Add(new Utrustning { ArtikelNamn = "Samsung Skärm 55\"", Kategori = "Skärm", Skick = "Mycket bra" });
             _db.Utrustningar.Add(new Utrustning { ArtikelNamn = "Whiteboard Standard", Kategori = "Whiteboard", Skick = "Sliten" });
             _db.Utrustningar.Add(new Utrustning { ArtikelNamn = "LG Skärm 32\"", Kategori = "Skärm", Skick = "Bra" });
+
+            _db.SaveChanges();
+
+            // BOKNINGAR
+            _db.Bokningar.Add(new Bokning { Datum = new DateTime(2026, 2, 1), Starttid = new TimeSpan(10, 0, 0), Sluttid = new TimeSpan(11, 0, 0) });
+            _db.Bokningar.Add(new Bokning { Datum = new DateTime(2026, 2, 2), Starttid = new TimeSpan(18, 0, 0), Sluttid = new TimeSpan(19, 0, 0) });
+
+            // BETALNINGAR
+            _db.Betalningar.Add(new Betalning { MedlemID = MedlemID, Belopp = 250, Status = "Betald" });
+            _db.Betalningar.Add(new Betalning { Belopp = 150, Status = "Obetald" });
+
+
 
             _db.SaveChanges();
 

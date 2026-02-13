@@ -12,8 +12,8 @@ namespace OOSU2_VT26_Grupp_07.Datalager
     {
         public static void Populate(OOPSU2DbContext _db)
         {
-            if (_db.Medlemmar.Any() || _db.Personaler.Any() || _db.Resurser.Any() || _db.Bokningar.Any() || _db.Betalningar.Any() || _db.Utrustningar.Any())
-                return;
+            //if (_db.Medlemmar.Any() || _db.Personaler.Any() || _db.Resurser.Any() || _db.Bokningar.Any() || _db.Betalningar.Any() || _db.Utrustningar.Any())
+               // return;
 
             // PERSONAL
             _db.Personaler.Add(new Personal { Namn = "Sara Lindgren", Roll = "Administratör", Losenord = "Admin123!" });

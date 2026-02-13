@@ -17,7 +17,7 @@ namespace OOSU2_VT26_Grupp_07.Entiteter
 
 
         public ICollection<Bokning> Bokningar { get; set; }
-        public ICollection<Betalning> Betalningar {  get; set; }
+        public ICollection<Betalning> Betalningar { get; set; }
 
         //public List<Bokning> Bokningar { get; set; } = new List<Bokning>();
         //public List<Betalning> Betalningar { get; set; } = new List<Betalning>();

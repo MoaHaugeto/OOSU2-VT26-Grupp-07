@@ -33,8 +33,8 @@ namespace OOSU2_VT26_Grupp_07.Datalager
             _db.Resurser.Add(new Resurs { Namn = "C01", Typ = "Konferenssal", Kapacitet = 25, Status = "Ej tillgänglig" });
 
             // BOKNINGAR
-            _db.Bokningar.Add(new Bokning { Datum = "2026-02-01", Starttid = "10:00", Sluttid = "11:00" });
-            _db.Bokningar.Add(new Bokning { Datum = "2026-02-02", Starttid = "18:00", Sluttid = "19:00" });
+            _db.Bokningar.Add(new Bokning { Datum = new DateTime(2026, 2, 1), Starttid = new TimeSpan(10, 0,0), Sluttid = new TimeSpan(11,0,0)});
+            _db.Bokningar.Add(new Bokning { Datum = new DateTime(2026, 2, 2), Starttid = new TimeSpan(18,0,0), Sluttid = new TimeSpan(19,0,0) });
 
             // BETALNINGAR
             _db.Betalningar.Add(new Betalning { Belopp = 250, Status = "Betald" });

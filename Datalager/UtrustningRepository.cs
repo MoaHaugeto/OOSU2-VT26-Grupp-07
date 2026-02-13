@@ -26,16 +26,17 @@ namespace OOSU2_VT26_Grupp_07.Datalager
             var resurs = _db.Resurser
                .FirstOrDefault(r => r.ResursID == uppdateradResurs.ResursID); // Matchar mot ResursID
 
-            if (resurs == null) 
-            
+            if (resurs == null)
+            {
                 resurs.ResursID = uppdateradResurs.ResursID;
                 resurs.Namn = uppdateradResurs.Namn;
                 resurs.Typ = uppdateradResurs.Typ;
                 resurs.Kapacitet = uppdateradResurs.Kapacitet;
                 resurs.Utrustning = uppdateradResurs.Utrustning;
                 resurs.Status = uppdateradResurs.Status;
-
-                //db.SaveChanges(); //sparar ny data om resurs i databbasen
+            } 
+            
+                
            
         }
     }

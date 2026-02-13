@@ -12,7 +12,9 @@ namespace OOSU2_VT26_Grupp_07.Datalager
     {
         public static void Populate(OOPSU2DbContext _db)
         {
-            if (_db.Medlemmar.Any() || _db.Personaler.Any() || _db.Resurser.Any() || _db.Bokningar.Any() || _db.Betalningar.Any() || _db.Utrustningar.Any())
+            if (_db.Betalningar.Any())
+
+                ////_db.Medlemmar.Any() || _db.Personaler.Any() || _db.Resurser.Any() || _db.Bokningar.Any() || _db.Betalningar.Any() || _db.Utrustningar.Any())
                 return;
 
             // PERSONAL
@@ -34,22 +36,32 @@ namespace OOSU2_VT26_Grupp_07.Datalager
 
             _db.SaveChanges();
 
-            var medlem = _db.Medlemmar.First();
-            var resurs = _db.Resurser.First();
+            //Vi har hådkodat dessa nedanför för att konu koppla dem till specifika utrustningar/bokningar/betalningar
+
+            Medlem anna = _db.Medlemmar.First(m => m.Namn == "Anna Andersson");
+            Medlem erik = _db.Medlemmar.First(m => m.Namn == "Erik Eriksson");
+
+            Resurs a01 = _db.Resurser.First(r => r.Namn == "A01");
+            Resurs b01 = _db.Resurser.First(r => r.Namn == "B01");
+            Resurs c01 = _db.Resurser.First(r => r.Namn == "C01");
+
+
+            //var medlem = _db.Medlemmar.First();
+            //var resurs = _db.Resurser.First();
 
             // UTRUSTNING
-            _db.Utrustningar.Add(new Utrustning { ArtikelNamn = "Epson Projektor", Kategori = "Projektor", Skick = "Bra" });
-            _db.Utrustningar.Add(new Utrustning { ArtikelNamn = "Samsung Skärm 55\"", Kategori = "Skärm", Skick = "Mycket bra" });
-            _db.Utrustningar.Add(new Utrustning { ArtikelNamn = "Whiteboard Standard", Kategori = "Whiteboard", Skick = "Sliten" });
-            _db.Utrustningar.Add(new Utrustning { ArtikelNamn = "LG Skärm 32\"", Kategori = "Skärm", Skick = "Bra" });
+            _db.Utrustningar.Add(new Utrustning { ResursID = a01.ResursID, ArtikelNamn = "Epson Projektor", Kategori = "Projektor", Skick = "Bra" });
+            _db.Utrustningar.Add(new Utrustning { ResursID = b01.ResursID, ArtikelNamn = "Samsung Skärm 55\"", Kategori = "Skärm", Skick = "Mycket bra" });
+            _db.Utrustningar.Add(new Utrustning { ResursID = c01.ResursID, ArtikelNamn = "Whiteboard Standard", Kategori = "Whiteboard", Skick = "Sliten" });
+            _db.Utrustningar.Add(new Utrustning { ResursID = a01.ResursID, ArtikelNamn = "LG Skärm 32\"", Kategori = "Skärm", Skick = "Bra" });
 
             // BOKNINGAR
-            _db.Bokningar.Add(new Bokning { MedlemID =medlem.MedlemID, ResursID = resurs.ResursID, Datum = new DateTime(2026, 2, 1), Starttid = new TimeSpan(10, 0, 0), Sluttid = new TimeSpan(11, 0, 0) });
-            _db.Bokningar.Add(new Bokning { MedlemID = medlem.MedlemID, ResursID = resurs.ResursID, Datum = new DateTime(2026, 2, 2), Starttid = new TimeSpan(18, 0, 0), Sluttid = new TimeSpan(19, 0, 0) });
+            _db.Bokningar.Add(new Bokning { MedlemID =anna.MedlemID, ResursID = a01.ResursID, Datum = new DateTime(2026, 2, 1), Starttid = new TimeSpan(10, 0,0), Sluttid = new TimeSpan(11, 0, 0) });
+            _db.Bokningar.Add(new Bokning { MedlemID = erik.MedlemID, ResursID = b01.ResursID, Datum = new DateTime(2026, 2, 2), Starttid = new TimeSpan(18, 0, 0), Sluttid = new TimeSpan(19, 0, 0) });
 
             // BETALNINGAR
-            _db.Betalningar.Add(new Betalning { MedlemID = medlem.MedlemID, Köpdatum = DateTime.Now, Belopp = 250, Forfallodatum = DateTime.Now.AddMonths(1), BataldDatum = DateTime.Now, Status = "Betald" });
-            _db.Betalningar.Add(new Betalning { MedlemID = medlem.MedlemID, Köpdatum = DateTime.Now, Belopp = 150, Forfallodatum = DateTime.Now.AddMonths(1), BataldDatum = DateTime.Now, Status = "Obetald" });
+            _db.Betalningar.Add(new Betalning { MedlemID = anna.MedlemID, Köpdatum = DateTime.Now, Belopp = 250, Forfallodatum = DateTime.Now.AddMonths(1), BataldDatum = DateTime.Now, Status = "Betald" });
+            _db.Betalningar.Add(new Betalning { MedlemID = erik.MedlemID, Köpdatum = DateTime.Now, Belopp = 150, Forfallodatum = DateTime.Now.AddMonths(1), BataldDatum = DateTime.Now, Status = "Obetald" });
 
 
 

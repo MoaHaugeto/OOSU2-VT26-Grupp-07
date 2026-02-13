@@ -31,5 +31,17 @@ namespace OOSU2_VT26_Grupp_07.Datalager
                 "TrustServerCertificate=True;"
             );
         }
+
+        // Förhindrar dubbelbokning av samma resurs/utrustning
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Bokning>()
+                .HasIndex(b => new { b.ResursID, b.Datum, b.Starttid, b.Sluttid })
+                .IsUnique();            
+            
+            //base.OnModelCreating(modelBuilder);
+
+
+        }
     }
 }

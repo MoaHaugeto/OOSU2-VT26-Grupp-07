@@ -37,7 +37,7 @@ namespace OOSU2_VT26_Grupp_07.Presentationslager_WPF_
                 "Företag"
             };
 
-            medlemskapsnivåComboBox.SelectedIndex = 0;
+            medlemskapsnivåComboBox.SelectedIndex = 0;//?
 
 
             betalningsStatusComboBox.ItemsSource = new List<string>
@@ -75,7 +75,7 @@ namespace OOSU2_VT26_Grupp_07.Presentationslager_WPF_
             _uow.MedlemRepository.LäggTillMedlem(medlem);
             _uow.Save();
 
-            MessageBox.Show("Medlem registrerad");
+            MessageBox.Show("Medlem registrerad!");
             this.Close(); 
 
         }

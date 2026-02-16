@@ -35,17 +35,17 @@
         <TextBlock Grid.Column="1" Grid.Row="2"  Text="Medlemmar" Margin="5" TextDecorations="Underline"/>
 
         <Button x:Name="hanteraMedlemmarButton"  Content="Hantera Medlemmar"
-                Grid.Column="1" Grid.Row="3" Margin="5"/>
+                Grid.Column="1" Grid.Row="3" Margin="5" Click="hanteraMedlemmarButton_Click"/>
 
         <TextBlock Grid.Column="2" Grid.Row="2" Text="Resurser" Margin="5" TextDecorations="Underline"/>
         <Button x:Name="hanteraResursbokningButton" Content="Hantera Resursbokningar"
-                Grid.Column="2" Grid.Row="3" Margin="5"/>
+                Grid.Column="2" Grid.Row="3" Margin="5" Click="hanteraResursbokningButton_Click"/>
         <Button x:Name="hanteraResurs" Content="Hantera Resurs"
-                Grid.Column="2" Grid.Row="4" Margin="5"/>
+                Grid.Column="2" Grid.Row="4" Margin="5" Click="hanteraResurs_Click"/>
 
         <TextBlock Grid.Column="3" Grid.Row="2" Text="Övrigt" Margin="5" TextDecorations="Underline"/>
         <Button x:Name="visaStatistikButton" Content="Visa Statistik" 
-                Grid.Column="3" Grid.Row="3" Margin="5"/>
+                Grid.Column="3" Grid.Row="3" Margin="5" Click="visaStatistikButton_Click"/>
 
     </Grid>
 </Window>

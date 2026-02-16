@@ -1,4 +1,5 @@
 ﻿using OOSU2_VT26_Grupp_07.Datalager;
+using OOSU2_VT26_Grupp_07.Presentationslager_WPF_;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -24,11 +25,13 @@ namespace OOSU2_VT26_Grupp_07
             using var uow = new UnitOfWork();
         }
 
-
-
         private void loggaInButton_Click(object sender, RoutedEventArgs e)
         {
             MessageBox.Show($"Hej! {användarnamnTexbox.Text}");
+
+            PersonalMeny meny = new PersonalMeny();
+            meny.Show();
+            this.Close();
         }
     }
 }

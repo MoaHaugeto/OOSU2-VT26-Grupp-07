@@ -23,5 +23,26 @@ namespace OOSU2_VT26_Grupp_07.Presentationslager_WPF_
         {
             InitializeComponent();
         }
+
+        private void visaMedlemmarButton_Click(object sender, RoutedEventArgs e)
+        {
+            VisaMedlemmar meny = new VisaMedlemmar();
+            meny.Show();
+            this.Close();
+        }
+
+        private void uppdateraMedlemmarButton_Click(object sender, RoutedEventArgs e)
+        {
+            UppdateraMedlemmar meny = new UppdateraMedlemmar();
+            meny.Show();
+            this.Close();
+        }
+
+        private void registreraMedlemmarButton_Click(object sender, RoutedEventArgs e)
+        {
+            RegistreraMedlemmar meny = new RegistreraMedlemmar();
+            meny.Show();
+            this.Close();
+        }
     }
 }

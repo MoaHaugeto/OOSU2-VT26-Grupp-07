@@ -26,6 +26,8 @@
             <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="20"/>
         </Grid.RowDefinitions>
@@ -35,8 +37,8 @@
         <TextBlock Grid.Column="1" Grid.Row="2" Text="Namn/Företagsnamn:" Margin="5" />
         <TextBox x:Name="namnTextBox" Grid.Column="2" Grid.Row="2" Width="200" Margin="5" />
 
-        <TextBlock Grid.Column="1" Grid.Row="3" Text="E-post:" Margin="5" />
-        <TextBox x:Name="epostTextBox" Grid.Column="2" Grid.Row="3" Width="200" Margin="5"/>
+        <TextBlock Grid.Column="1" Grid.Row="3" Text="Email:" Margin="5" />
+        <TextBox x:Name="emailTextBox" Grid.Column="2" Grid.Row="3" Width="200" Margin="5"/>
 
         <TextBlock Grid.Column="1" Grid.Row="4" Text="Telefonnummer:" Margin="5" />
         <TextBox x:Name="telefonnummerTextBox" Grid.Column="2" Grid.Row="4" Width="200" Margin="5"/>
@@ -46,7 +48,10 @@
 
         <TextBlock Grid.Column="1" Grid.Row="6" Text="Betalningsstatus" Margin="5"/>
         <!--Här ska vi nog ha en dropdown-box, jämte betalningsstatus-->
-
+        <ComboBox x:Name="medlemskapsnivåComboBox" Grid.Column="2" Grid.Row="5" Margin="5" />
+        <ComboBox x:Name="betalningsStatusComboBox" Grid.Column="2" Grid.Row="6" Margin="5" />
+        <Button x:Name="registreraMedlemButton" Grid.Column="1" Grid.Row="7" Content="Registrera medlem" Margin="5" Background="#FF89CE7F" Click="registreraMedlemButton_Click"
+                />
 
 
 

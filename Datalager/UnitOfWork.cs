@@ -5,6 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using OOSU2_VT26_Grupp_07.Entiteter;
+using OOSU2_VT26_Grupp_07.Controller;
+
 
 
 namespace OOSU2_VT26_Grupp_07.Datalager

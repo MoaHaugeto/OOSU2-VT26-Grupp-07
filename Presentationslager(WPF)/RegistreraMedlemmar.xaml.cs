@@ -13,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using OOSU2_VT26_Grupp_07.Entiteter;
+using OOSU2_VT26_Grupp_07.Controller;
 
 
 namespace OOSU2_VT26_Grupp_07.Presentationslager_WPF_
@@ -23,11 +24,13 @@ namespace OOSU2_VT26_Grupp_07.Presentationslager_WPF_
     public partial class RegistreraMedlemmar : Window
     {
         private readonly UnitOfWork _uow;
+        private readonly MedlemsController _controller;
         public RegistreraMedlemmar()
         {
             InitializeComponent();
 
             _uow = new UnitOfWork();
+            _controller = new MedlemsController(_uow);
 
             medlemskapsnivåComboBox.ItemsSource = new List<string>
             {
@@ -36,8 +39,8 @@ namespace OOSU2_VT26_Grupp_07.Presentationslager_WPF_
                 "Fast",
                 "Företag"
             };
-
-            medlemskapsnivåComboBox.SelectedIndex = 0;//?
+            
+            medlemskapsnivåComboBox.SelectedIndex = 0;
 
 
             betalningsStatusComboBox.ItemsSource = new List<string>
@@ -52,31 +55,31 @@ namespace OOSU2_VT26_Grupp_07.Presentationslager_WPF_
 
         private void registreraMedlemButton_Click(object sender, RoutedEventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(namnTextBox.Text))
+            string namn = namnTextBox.Text;
+            string telefon = telefonnummerTextBox.Text;
+            string email = emailTextBox.Text;
+
+
+            string medlemskapsnivå = medlemskapsnivåComboBox.SelectedItem?.ToString();
+            string betalstatus = betalningsStatusComboBox.SelectedItem?.ToString();
+
+            bool resultat = _controller.LäggTillMedlem(
+                namn,
+                telefon,
+                email,
+                medlemskapsnivå,
+                betalstatus,
+                out string felmeddelande
+    );
+
+            if (!resultat)
             {
-                MessageBox.Show("Fyll i namn.");
+                MessageBox.Show(felmeddelande);
                 return;
             }
-            if(medlemskapsnivåComboBox.SelectedIndex == null) 
-            {
-                MessageBox.Show("Välj medlemskapsnivå.");
-                return;
-            }
-
-            Medlem medlem = new Medlem
-            {
-                Namn = namnTextBox.Text.Trim(),
-                Telefonnummer = telefonnummerTextBox.Text.Trim(),
-                Email = emailTextBox.Text.Trim(),
-                MedlemskapsNivå = medlemskapsnivåComboBox.SelectedItem.ToString(), 
-                Betalstatus=betalningsStatusComboBox.SelectedItem.ToString()
-            };
-
-            _uow.MedlemRepository.LäggTillMedlem(medlem);
-            _uow.Save();
 
             MessageBox.Show("Medlem registrerad!");
-            this.Close(); 
+            this.Close();
 
         }
     }

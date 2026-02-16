@@ -1,12 +1,84 @@
-﻿using System;
+﻿using OOSU2_VT26_Grupp_07.Datalager;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using OOSU2_VT26_Grupp_07.Entiteter;
+using System.Windows;
+
 
 namespace OOSU2_VT26_Grupp_07.Controller
 {
-    class MedlemsController
+    public class MedlemsController
     {
+        private readonly UnitOfWork _uow;
+
+        public MedlemsController(UnitOfWork uow)
+        {
+            _uow = uow;
+        }
+
+        public List<Medlem> HämtaAllaMEdlemmar()
+        {
+            return _uow.MedlemRepository.HämtaAllaMedlemmar();
+        }
+
+        public bool LäggTillMedlem(string namn, string telefonnummer, string email, string medlemskapsnivå, string betalningsstatus, out string fel)
+        {
+
+            fel = "";
+            if (string.IsNullOrWhiteSpace(namn))
+            {
+                fel = ("Namn måste fyllas i!");
+                return false;
+            }
+
+            if (string.IsNullOrWhiteSpace(medlemskapsnivå) || medlemskapsnivå == "Välj nivå")
+            {
+                fel = ("Välj medlemskapsnivå.");
+                return false;
+            }
+
+            if (string.IsNullOrWhiteSpace(betalningsstatus) || betalningsstatus == "Välj status")
+            {
+                fel = ("Välj betalningsstatus.");
+                return false;
+            }
+
+            string emailTrim = (email ?? "").Trim();
+            if (email != null)
+            {
+                emailTrim = email.Trim();
+            }
+
+            if (emailTrim.Length > 0 && !emailTrim.Contains("@"))
+            {
+                fel = ("Email måste innehålla @.");
+                return false;
+            }
+
+            if (emailTrim.Length > 0 && _uow.MedlemRepository.FinnsEmail(emailTrim))
+            {
+                fel = ("Email finns redan registrerad");
+                return false;
+            }
+
+
+            var medlem = new Medlem
+            {
+                Namn = namn.Trim(),
+                Telefonnummer = (telefonnummer  ?? "").Trim(),
+                Email = emailTrim,
+                MedlemskapsNivå = medlemskapsnivå,
+                Betalstatus = betalningsstatus,
+            };
+            
+
+            _uow.MedlemRepository.LäggTillMedlem(medlem);
+            _uow.Save();
+            return true;
+           
+        }
     }
 }

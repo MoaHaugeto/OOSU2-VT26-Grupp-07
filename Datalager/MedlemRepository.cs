@@ -25,6 +25,11 @@ namespace OOSU2_VT26_Grupp_07.Datalager
             _db.Medlemmar.Add(medlem);
         }
 
+        public bool FinnsEmail(string email)
+        {
+            return _db.Medlemmar.Any(m => m.Email == email);    
+        }
+
         //public void UppdateraMedlem();
 
 

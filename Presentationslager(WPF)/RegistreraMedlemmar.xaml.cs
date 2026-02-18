@@ -70,7 +70,7 @@ namespace OOSU2_VT26_Grupp_07.Presentationslager_WPF_
                 medlemskapsnivå,
                 betalstatus,
                 out string felmeddelande
-    );
+                );
 
             if (!resultat)
             {
@@ -79,8 +79,10 @@ namespace OOSU2_VT26_Grupp_07.Presentationslager_WPF_
             }
 
             MessageBox.Show("Medlem registrerad!");
+            _uow.Dispose();
             this.Close();
 
         }
+
     }
 }

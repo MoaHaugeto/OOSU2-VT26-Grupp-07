@@ -30,18 +30,18 @@ namespace OOSU2_VT26_Grupp_07.Datalager
         //public UtrustningRepository UtrustningRepository { get; } 
 
 
-        public UnitOfWork(OOPSU2DbContext context)
+        public UnitOfWork()
         {
             _db = new OOPSU2DbContext();
             _db.Database.EnsureCreated();
             DbSeed.Populate(_db);
 
-            BetalningRepository = new GenericRepository<Betalning>(context.Betalningar);
-            BokningRepository = new GenericRepository<Bokning>(context.Bokningar);
-            MedlemRepository = new GenericRepository<Medlem>(context.Medlemmar);
-            PersonalRepository = new GenericRepository<Personal>(context.Personaler);
-            ResursRepository = new GenericRepository<Resurs>(context.Resurser);
-            UtrustningRepository = new GenericRepository<Utrustning>(context.Utrustningar);
+            BetalningRepository = new GenericRepository<Betalning>(_db.Betalningar);
+            BokningRepository = new GenericRepository<Bokning>(_db.Bokningar);
+            MedlemRepository = new GenericRepository<Medlem>(_db.Medlemmar);
+            PersonalRepository = new GenericRepository<Personal>(_db.Personaler);
+            ResursRepository = new GenericRepository<Resurs>(_db.Resurser);
+            UtrustningRepository = new GenericRepository<Utrustning>(_db.Utrustningar);
 
 
 

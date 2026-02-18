@@ -36,14 +36,17 @@ namespace OOSU2_VT26_Grupp_07.Datalager
              _dbSet.Remove(entity);
         }
 
-        public IEnumerable<T> Find(Func<T, bool> predicate)
+        public IEnumerable<T> Find(Expression<Func<T, bool>> predicate)
         {
             return _dbSet.Where(predicate);
         }
 
-        //Get all metod?
+        public IEnumerable<T> GetAll()
+        {
+            return _dbSet.ToList();
+        }
 
-        public T FirstOrDefault(Func<T, bool> predicate)
+        public T FirstOrDefault(Expression<Func<T, bool>> predicate)
         {
             return _dbSet.FirstOrDefault(predicate);
         }

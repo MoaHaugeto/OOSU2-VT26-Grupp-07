@@ -21,7 +21,7 @@ namespace OOSU2_VT26_Grupp_07.Controller
 
         public List<Medlem> HämtaAllaMEdlemmar()
         {
-            return _uow.MedlemRepository.HämtaAllaMedlemmar();
+            return _uow.MedlemRepository.GetAll().ToList();
         }
 
         public bool LäggTillMedlem(string namn, string telefonnummer, string email, string medlemskapsnivå, string betalningsstatus, out string fel)
@@ -58,9 +58,9 @@ namespace OOSU2_VT26_Grupp_07.Controller
                 return false;
             }
 
-            if (emailTrim.Length > 0 && _uow.MedlemRepository.FinnsEmail(emailTrim))
+            if (emailTrim.Length > 0 && _uow.MedlemRepository.FirstOrDefault(m => m.Email == emailTrim) != null)
             {
-                fel = ("Email finns redan registrerad");
+                fel = "Email finns redan registrerad";
                 return false;
             }
 
@@ -75,7 +75,7 @@ namespace OOSU2_VT26_Grupp_07.Controller
             };
             
 
-            _uow.MedlemRepository.LäggTillMedlem(medlem);
+            _uow.MedlemRepository.Add(medlem);
             _uow.Save();
             return true;
            

@@ -44,9 +44,7 @@ namespace OOSU2_VT26_Grupp_07
                 MessageBox.Show("Fel användarnamn eller lösenord.");
             }
            
-            PersonalMeny meny = new PersonalMeny();
-            meny.Show();
-            this.Close();
+           
         }
     }
 }

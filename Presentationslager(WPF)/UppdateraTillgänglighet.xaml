@@ -1,11 +1,11 @@
-﻿<Window x:Class="OOSU2_VT26_Grupp_07.Presentationslager_WPF_.TaBortResursbokning"
+﻿<Window x:Class="OOSU2_VT26_Grupp_07.Presentationslager_WPF_.UppdateraTillgänglighet"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:OOSU2_VT26_Grupp_07.Presentationslager_WPF_"
         mc:Ignorable="d"
-        Title="TaBortResursbokning" Height="450" Width="800">
+        Title="UppdateraTillgänglighet" Height="450" Width="800">
     <Grid>
         
     </Grid>

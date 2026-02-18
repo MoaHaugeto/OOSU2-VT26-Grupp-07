@@ -15,11 +15,11 @@ using System.Windows.Shapes;
 namespace OOSU2_VT26_Grupp_07.Presentationslager_WPF_
 {
     /// <summary>
-    /// Interaction logic for UppdateraResurs.xaml
+    /// Interaction logic for UppdateraTillgänglighet.xaml
     /// </summary>
-    public partial class UppdateraResurs : Window
+    public partial class UppdateraTillgänglighet : Window
     {
-        public UppdateraResurs()
+        public UppdateraTillgänglighet()
         {
             InitializeComponent();
         }

@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:OOSU2_VT26_Grupp_07.Presentationslager_WPF_"
         mc:Ignorable="d" FontSize="16" FontFamily="Lucida Bright"
-        Title="UppdateraMedlemmar" Height="500" Width="800">
+        Title="UppdateraMedlemmar" Height="530" Width="800">
     <Grid>
         <StackPanel Margin="20">
             <TextBlock Text="Välj Medlem att uppdatera" Margin="0,0,0,5"/>
@@ -29,6 +29,7 @@
 
             <Button x:Name="sparaButton" Content="Spara ändringar" Click="sparaButton_Click" 
                 Background="#FF89CE7F" Height="35" Margin="0,0,0,10"/>
+            <Button x:Name="raderaMedlemButton" Content="Radera Medlem" Background="#FFFF7F7F" Height="35" Margin="0,0,0,10" Click="raderaMedlemButton_Click"/>
             <Button x:Name="tillbakaButton" Content="Avbryt" Click="tillbakaButton_Click" Height="35"/>
         </StackPanel>
 

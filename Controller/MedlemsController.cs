@@ -29,6 +29,14 @@ namespace OOSU2_VT26_Grupp_07.Controller
             _uow.MedlemRepository.Update(medlem);
             _uow.Save();
         }
+        public void TaBortMedlem(Medlem medlem)
+        {
+            if (medlem != null)
+            {
+                _uow.MedlemRepository.Remove(medlem);
+                _uow.Save();
+            }
+        }
 
         public bool LäggTillMedlem(string namn, string telefonnummer, string email, string medlemskapsnivå, string betalningsstatus, out string fel)
         {

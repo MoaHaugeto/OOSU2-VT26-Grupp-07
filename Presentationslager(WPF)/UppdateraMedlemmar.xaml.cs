@@ -78,5 +78,51 @@ namespace OOSU2_VT26_Grupp_07.Presentationslager_WPF_
             meny.Show();
             this.Close();
         }
+
+        private void raderaMedlemButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (medlemComboBox.SelectedItem is Medlem valdMedlem)
+            {
+                // Bekräfta radering med användaren
+                MessageBoxResult resultat = MessageBox.Show(
+                    $"Är du säker på att du vill ta bort {valdMedlem.Namn}?",
+                    "Bekräfta radering",
+                    MessageBoxButton.YesNo,
+                    MessageBoxImage.Warning);
+
+                if (resultat == MessageBoxResult.Yes)
+                {
+                    // Anropa controllern för att ta bort från databasen
+                    _controller.TaBortMedlem(valdMedlem);
+
+                    MessageBox.Show("Medlemmen har tagits bort.");
+
+                    // Uppdatera listan i ComboBoxen så den borttagna medlemmen försvinner
+                    medlemComboBox.ItemsSource = _controller.HämtaAllaMedlemmar();
+
+                    // Rensa fälten
+                    RensaFält();
+                    _uow.Dispose();
+                    HanteraMedlemar meny = new HanteraMedlemar();
+                    meny.Show();
+                    this.Close();
+                }
+            }
+            else
+            {
+                MessageBox.Show("Vänligen välj en medlem i listan först.");
+            }
+        }
+
+        // Hjälpmetod för att rensa textrutorna
+        private void RensaFält()
+        {
+            namnTextBox.Clear();
+            emailTextBox.Clear();
+            telefonTextBox.Clear();
+            nivaComboBox.SelectedIndex = -1;
+            statusComboBox.SelectedIndex = -1;
+        }
     }
+    
 }

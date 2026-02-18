@@ -59,6 +59,15 @@ namespace OOSU2_VT26_Grupp_07.Controller
             return true;
         }
 
+        public void UppdateraBokning(Bokning bokning)
+        {
+            if (bokning != null)
+            {
+                _uow.BokningRepository.Update(bokning);
+                _uow.Save();
+            }
+        }
+
         public void TaBortBokning(int id)
         {
             var bokning = _uow.BokningRepository.FirstOrDefault(x => x.BokningID == id);

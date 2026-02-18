@@ -30,5 +30,19 @@ namespace OOSU2_VT26_Grupp_07.Presentationslager_WPF_
             meny.Show();
             this.Close();
         }
+
+        private void uppdateraResursbokningButton_Click(object sender, RoutedEventArgs e)
+        {
+            UppdateraResursbokning meny = new UppdateraResursbokning();
+            meny.Show();
+            this.Close();
+        }
+
+        private void registreraResursbokningButton_Click(object sender, RoutedEventArgs e)
+        {
+            RegistreraResursbokning meny = new RegistreraResursbokning();
+            meny.Show();
+            this.Close();
+        }
     }
 }

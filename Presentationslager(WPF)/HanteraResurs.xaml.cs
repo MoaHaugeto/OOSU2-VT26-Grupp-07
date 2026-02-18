@@ -30,5 +30,12 @@ namespace OOSU2_VT26_Grupp_07.Presentationslager_WPF_
             meny.Show();
             this.Close();
         }
+
+        private void UppdateraResursButton_Click(object sender, RoutedEventArgs e)
+        {
+            UppdateraTillgänglighet meny = new UppdateraTillgänglighet();
+            meny.Show();
+            this.Close();
+        }
     }
 }

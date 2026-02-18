@@ -102,10 +102,7 @@ namespace OOSU2_VT26_Grupp_07.Presentationslager_WPF_
 
                     // Rensa fälten
                     RensaFält();
-                    _uow.Dispose();
-                    HanteraMedlemar meny = new HanteraMedlemar();
-                    meny.Show();
-                    this.Close();
+                    
                 }
             }
             else

@@ -4,9 +4,30 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:OOSU2_VT26_Grupp_07.Presentationslager_WPF_"
-        mc:Ignorable="d"
+        mc:Ignorable="d" FontSize="16" FontFamily="Lucida Bright"
         Title="VisaResursbokningar" Height="450" Width="800">
-    <Grid>
-        
+    <Grid Margin="20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Text="Aktuella Resursbokningar" FontSize="28" Margin="0,0,0,20"/>
+
+        <DataGrid x:Name="bokningarDataGrid" Grid.Row="1" AutoGenerateColumns="False" 
+                  IsReadOnly="True" SelectionMode="Single">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="BokningsID" Binding="{Binding BokningID}" Width="100"/>
+                <DataGridTextColumn Header="MedlemsID" Binding="{Binding MedlemID}" Width="100"/>
+                <DataGridTextColumn Header="ResursID" Binding="{Binding ResursID}" Width="100"/>
+                <DataGridTextColumn Header="Datum" Binding="{Binding Datum, StringFormat={}{0:yyyy-MM-dd}}" Width="150"/>
+                <DataGridTextColumn Header="Starttid" Binding="{Binding Starttid}" Width="*"/>
+                <DataGridTextColumn Header="Sluttid" Binding="{Binding Sluttid}" Width="*"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <Button x:Name="tillbakaButton" Content="Tillbaka" Grid.Row="2" 
+                Width="150" HorizontalAlignment="Left" Margin="0,20,0,0" 
+                Click="tillbakaButton_Click"/>
     </Grid>
 </Window>

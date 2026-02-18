@@ -27,7 +27,7 @@
         <TextBlock Grid.Column="1" Grid.Row="1" Text="Hantera Resurs" FontSize="35" 
                    Grid.ColumnSpan="3" Margin="10"/>
         <Button x:Name="UppdateraResursButton" Content="Uppdatera Tillgänglighet" 
-                Grid.Column="1" Grid.Row="2" Margin="5" />
+                Grid.Column="1" Grid.Row="2" Margin="5" Click="UppdateraResursButton_Click" />
         <Button x:Name="tillbakaButton" Grid.Column="1" Grid.Row="5" Height="25" Content="Tillbaka" Click="tillbakaButton_Click"/>
 
     </Grid>

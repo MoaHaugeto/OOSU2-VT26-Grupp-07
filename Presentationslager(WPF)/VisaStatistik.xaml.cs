@@ -1,4 +1,6 @@
-﻿using System;
+﻿using OOSU2_VT26_Grupp_07.Controller;
+using OOSU2_VT26_Grupp_07.Datalager;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -22,6 +24,27 @@ namespace OOSU2_VT26_Grupp_07.Presentationslager_WPF_
         public VisaStatistik()
         {
             InitializeComponent();
+        }
+
+        private void TillbakaButton_Click(object sender, RoutedEventArgs e)
+        {           
+            PersonalMeny meny = new PersonalMeny();
+            meny.Show();
+            this.Close();
+        }
+
+        private void visaBetalstatusButton_Click(object sender, RoutedEventArgs e)
+        {
+            VisaBetalstatus meny = new VisaBetalstatus();
+            meny.Show();
+            this.Close();
+        }
+
+        private void visaResursbokningButton_Click(object sender, RoutedEventArgs e)
+        {
+            VisaResursbokningar meny = new VisaResursbokningar();
+            meny.Show();
+            this.Close();
         }
     }
 }

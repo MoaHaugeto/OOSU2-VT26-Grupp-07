@@ -19,9 +19,15 @@ namespace OOSU2_VT26_Grupp_07.Controller
             _uow = uow;
         }
 
-        public List<Medlem> HämtaAllaMEdlemmar()
+        public List<Medlem> HämtaAllaMedlemmar()
         {
             return _uow.MedlemRepository.GetAll().ToList();
+        }
+
+        public void UppdateraMedlem(Medlem medlem)
+        {
+            _uow.MedlemRepository.Update(medlem);
+            _uow.Save();
         }
 
         public bool LäggTillMedlem(string namn, string telefonnummer, string email, string medlemskapsnivå, string betalningsstatus, out string fel)

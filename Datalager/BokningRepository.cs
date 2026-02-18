@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace OOSU2_VT26_Grupp_07.Datalager
 {
-    public class BokningRepository
+    internal class BokningRepository
     {
         private readonly OOPSU2DbContext _db;
 

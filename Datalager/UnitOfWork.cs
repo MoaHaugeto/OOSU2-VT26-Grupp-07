@@ -15,28 +15,42 @@ namespace OOSU2_VT26_Grupp_07.Datalager
     {
         private readonly OOPSU2DbContext _db;
 
+        public GenericRepository<Betalning> BetalningRepository { get; private set; }
+        public GenericRepository<Bokning> BokningRepository { get; private set; }
+        public GenericRepository<Medlem> MedlemRepository { get; private set; }
+        public GenericRepository<Personal> PersonalRepository { get; private set; }
+        public GenericRepository<Resurs> ResursRepository { get; private set; }
+        public GenericRepository<Utrustning> UtrustningRepository { get; private set; }
+        //public BetalningRepository BetalningRepository { get; }
+        //public BokningRepository BokningRepository { get; }
+        //public MedlemRepository MedlemRepository { get;}
 
-        public BetalningRepository BetalningRepository { get; }
-        public BokningRepository BokningRepository { get; }
-        public MedlemRepository MedlemRepository { get;}
-
-        public PersonalRepository PersonalRepository { get; } 
-        public ResursRepository ResursRepository { get; }
-        public UtrustningRepository UtrustningRepository { get; } 
+        //public PersonalRepository PersonalRepository { get; } 
+        //public ResursRepository ResursRepository { get; }
+        //public UtrustningRepository UtrustningRepository { get; } 
 
 
-        public UnitOfWork()
+        public UnitOfWork(OOPSU2DbContext context)
         {
             _db = new OOPSU2DbContext();
             _db.Database.EnsureCreated();
             DbSeed.Populate(_db);
 
-            MedlemRepository = new MedlemRepository(_db);
-            BetalningRepository = new BetalningRepository(_db);
-            BokningRepository = new BokningRepository(_db);
-            PersonalRepository = new PersonalRepository(_db);
-            ResursRepository = new ResursRepository(_db);
-            UtrustningRepository = new UtrustningRepository(_db);
+            BetalningRepository = new GenericRepository<Betalning>(context.Betalningar);
+            BokningRepository = new GenericRepository<Bokning>(context.Bokningar);
+            MedlemRepository = new GenericRepository<Medlem>(context.Medlemmar);
+            PersonalRepository = new GenericRepository<Personal>(context.Personaler);
+            ResursRepository = new GenericRepository<Resurs>(context.Resurser);
+            UtrustningRepository = new GenericRepository<Utrustning>(context.Utrustningar);
+
+
+
+            //MedlemRepository = new MedlemRepository(_db);
+            //BetalningRepository = new BetalningRepository(_db);
+            //BokningRepository = new BokningRepository(_db);
+            //PersonalRepository = new PersonalRepository(_db);
+            //ResursRepository = new ResursRepository(_db);
+            //UtrustningRepository = new UtrustningRepository(_db);
 
         }
 

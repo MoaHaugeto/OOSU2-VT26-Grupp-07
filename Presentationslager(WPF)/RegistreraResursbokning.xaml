@@ -5,48 +5,50 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:OOSU2_VT26_Grupp_07.Presentationslager_WPF_"
         mc:Ignorable="d" FontSize="18" FontFamily="Lucida Bright"
-        Title="RegistreraResursbokning" Height="450" Width="800">
-    <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="20"/>
-            <ColumnDefinition Width="auto"/>
-            <ColumnDefinition Width="auto"/>
-            <ColumnDefinition Width="auto"/>
-            <ColumnDefinition Width="auto"/>
-            <ColumnDefinition Width="auto"/>
-            <ColumnDefinition Width="auto"/>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="20"/>
-        </Grid.ColumnDefinitions>
+        Title="RegistreraResursbokning" Height="550" Width="800">
+    <Grid Margin="20">
         <Grid.RowDefinitions>
-            <RowDefinition Height="20"/>
-            <RowDefinition Height="auto"/>
-            <RowDefinition Height="auto"/>
-            <RowDefinition Height="auto"/>
-            <RowDefinition Height="auto"/>
-            <RowDefinition Height="auto"/>
-            <RowDefinition Height="auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
-            <RowDefinition Height="20"/>
         </Grid.RowDefinitions>
 
-        <TextBlock Grid.Column="1" Grid.Row="1" Text="Registrera Resursbokning" FontSize="35"
-           Grid.ColumnSpan="3" Margin="10"/>
-        
-        <TextBlock Grid.Column="1" Grid.Row="2" Text="ResursID:" Margin="5" />
-        <TextBox x:Name="ResursIDTextBox" Grid.Column="2" Grid.Row="2" Width="200" Margin="5" />
+        <TextBlock Text="Registrera Ny Bokning" FontSize="30" Margin="0,0,0,20" Grid.Row="0"/>
 
-        <TextBlock Grid.Column="1" Grid.Row="3" Text="MedlemsID:" Margin="5" />
-        <TextBox x:Name="MedlemsIDTextBox" Grid.Column="2" Grid.Row="3" Width="200" Margin="5"/>
+        <StackPanel Grid.Row="1" Margin="0,5">
+            <TextBlock Text="Resurs (ID):"/>
+            <TextBox x:Name="ResursIDTextBox" Margin="0,5"/>
+        </StackPanel>
 
-        <TextBlock Grid.Column="1" Grid.Row="4" Text="Bokningsdatum" Margin="5"/>
-        <TextBox x:Name="BokningsdatumTextBox" Grid.Column="2" Grid.Row="4" Width="200" Margin="5"/>
+        <StackPanel Grid.Row="2" Margin="0,5">
+            <TextBlock Text="Medlem (ID):"/>
+            <TextBox x:Name="MedlemsIDTextBox" Margin="0,5"/>
+        </StackPanel>
 
-        <TextBlock Grid.Column="1" Grid.Row="5" Text="Starttid" Margin="5"/>
-        <TextBox x:Name="StarttidTextBox" Grid.Column="2" Grid.Row="5" Width="200" Margin="5"/>
+        <StackPanel Grid.Row="3" Margin="0,5">
+            <TextBlock Text="Datum:"/>
+            <DatePicker x:Name="BokningsdatumPicker" Margin="0,5"/>
+        </StackPanel>
 
-        <TextBlock Grid.Column="1" Grid.Row="6" Text="Sluttid" Margin="5"/>
-        <TextBox x:Name="SluttidTextBox" Grid.Column="2" Grid.Row="6" Width="200" Margin="5"/>
-        
+        <StackPanel Grid.Row="4" Margin="0,5">
+            <TextBlock Text="Starttid (HH:mm):"/>
+            <TextBox x:Name="StarttidTextBox" Margin="0,5" Text="08:00"/>
+        </StackPanel>
+
+        <StackPanel Grid.Row="5" Margin="0,5">
+            <TextBlock Text="Sluttid (HH:mm):"/>
+            <TextBox x:Name="SluttidTextBox" Margin="0,5" Text="09:00"/>
+        </StackPanel>
+
+        <UniformGrid Grid.Row="6" Columns="2" Margin="0,20,0,0" VerticalAlignment="Top">
+            <Button x:Name="registreraBokningButton" Content="Boka" Margin="0,0,5,0" 
+                    Background="#FF89CE7F" Height="40" Click="registreraBokningButton_Click"/>
+            <Button x:Name="avbrytButton" Content="Avbryt" Margin="5,0,0,0" 
+                    Height="40" Click="avbrytButton_Click"/>
+        </UniformGrid>
     </Grid>
 </Window>

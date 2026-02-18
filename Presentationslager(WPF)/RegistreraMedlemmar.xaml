@@ -51,7 +51,9 @@
         <!--Här ska vi nog ha en dropdown-box, jämte betalningsstatus hehehe-->
         <ComboBox x:Name="medlemskapsnivåComboBox" Grid.Column="2" Grid.Row="5" Margin="5" />
         <ComboBox x:Name="betalningsStatusComboBox" Grid.Column="2" Grid.Row="6" Margin="5" />
-        <Button x:Name="registreraMedlemButton" Grid.Column="1" Grid.Row="7" Content="Registrera medlem" Margin="5" Background="#FF89CE7F" Click="registreraMedlemButton_Click"/>
+        <Button x:Name="registreraMedlemButton" Grid.Column="2" Grid.Row="7" Content="Registrera medlem" Margin="5" Background="#FF89CE7F" Click="registreraMedlemButton_Click"/>
+
+        <Button x:Name="avbrytRegistreringButton" Grid.Column="1" Grid.Row="7" Content="Avbryt Registrering" Margin="5" Background="#FFF15167" Click="avbrytRegistreringButton_Click"/>
 
 
 

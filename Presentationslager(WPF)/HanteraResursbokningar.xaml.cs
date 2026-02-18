@@ -23,5 +23,12 @@ namespace OOSU2_VT26_Grupp_07.Presentationslager_WPF_
         {
             InitializeComponent();
         }
+
+        private void TillbakaButton_Click(object sender, RoutedEventArgs e)
+        {
+            PersonalMeny meny = new PersonalMeny();
+            meny.Show();
+            this.Close();
+        }
     }
 }

@@ -80,9 +80,21 @@ namespace OOSU2_VT26_Grupp_07.Presentationslager_WPF_
 
             MessageBox.Show("Medlem registrerad!");
             _uow.Dispose();
+
+            HanteraMedlemar meny = new HanteraMedlemar();
+            meny.Show();
+
             this.Close();
 
         }
 
+        private void avbrytRegistreringButton_Click(object sender, RoutedEventArgs e)
+        {
+            _uow?.Dispose();
+
+            HanteraMedlemar meny = new HanteraMedlemar();
+            meny.Show();
+            this.Close();
+        }
     }
 }

@@ -28,7 +28,7 @@ namespace OOSU2_VT26_Grupp_07
         {
             using var uow = new UnitOfWork();
             string namn = användarnamnTexbox.Text;
-            string lösen = lösenordTextbox.Text;
+            string lösen = lösenordTextbox.Password;
             
             //Här kontrollerar vi ifall personen som ska logga in finns registrerad i personaltabellen
             var anställd = uow.PersonalRepository.FirstOrDefault(p => p.Namn == namn && p.Losenord == lösen);

@@ -1,4 +1,6 @@
-﻿using System;
+﻿using OOSU2_VT26_Grupp_07.Controller;
+using OOSU2_VT26_Grupp_07.Datalager;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,9 +21,13 @@ namespace OOSU2_VT26_Grupp_07.Presentationslager_WPF_
     /// </summary>
     public partial class HanteraMedlemar : Window
     {
+        private UnitOfWork _uow;
+        private MedlemsController _controller;
         public HanteraMedlemar()
         {
             InitializeComponent();
+            _uow = new UnitOfWork();
+            _controller = new MedlemsController(_uow);
         }
 
         private void visaMedlemmarButton_Click(object sender, RoutedEventArgs e)

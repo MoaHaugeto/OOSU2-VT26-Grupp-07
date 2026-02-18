@@ -20,15 +20,7 @@ namespace OOSU2_VT26_Grupp_07.Datalager
         public GenericRepository<Medlem> MedlemRepository { get; private set; }
         public GenericRepository<Personal> PersonalRepository { get; private set; }
         public GenericRepository<Resurs> ResursRepository { get; private set; }
-        public GenericRepository<Utrustning> UtrustningRepository { get; private set; }
-        //public BetalningRepository BetalningRepository { get; }
-        //public BokningRepository BokningRepository { get; }
-        //public MedlemRepository MedlemRepository { get;}
-
-        //public PersonalRepository PersonalRepository { get; } 
-        //public ResursRepository ResursRepository { get; }
-        //public UtrustningRepository UtrustningRepository { get; } 
-
+        public GenericRepository<Utrustning> UtrustningRepository { get; private set; }       
 
         public UnitOfWork()
         {
@@ -43,18 +35,7 @@ namespace OOSU2_VT26_Grupp_07.Datalager
             ResursRepository = new GenericRepository<Resurs>(_db.Resurser);
             UtrustningRepository = new GenericRepository<Utrustning>(_db.Utrustningar);
 
-
-
-            //MedlemRepository = new MedlemRepository(_db);
-            //BetalningRepository = new BetalningRepository(_db);
-            //BokningRepository = new BokningRepository(_db);
-            //PersonalRepository = new PersonalRepository(_db);
-            //ResursRepository = new ResursRepository(_db);
-            //UtrustningRepository = new UtrustningRepository(_db);
-
         }
-
-        
 
         public int Save() => _db.SaveChanges();
         public void Dispose() => _db.Dispose();

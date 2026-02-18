@@ -22,13 +22,28 @@ namespace OOSU2_VT26_Grupp_07
         {
             InitializeComponent();
 
-            using var uow = new UnitOfWork();
         }
 
         private void loggaInButton_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show($"Hej! {användarnamnTexbox.Text}");
+            using var uow = new UnitOfWork();
+            string namn = användarnamnTexbox.Text;
+            string lösen = lösenordTextbox.Text;
+            
+            //Här kontrollerar vi ifall personen som ska logga in finns registrerad i personaltabellen
+            var anställd = uow.PersonalRepository.FirstOrDefault(p => p.Namn == namn && p.Losenord == lösen);
 
+            if (anställd != null)
+            {
+                MessageBox.Show($"Välkommen {anställd.Namn} ({anställd.Roll})!");
+                new PersonalMeny().Show();
+                this.Close();
+            }
+            else
+            {
+                MessageBox.Show("Fel användarnamn eller lösenord.");
+            }
+           
             PersonalMeny meny = new PersonalMeny();
             meny.Show();
             this.Close();

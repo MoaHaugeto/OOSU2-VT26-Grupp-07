@@ -84,11 +84,13 @@ namespace OOSU2_VT26_Grupp_07.Presentationslager_WPF_
                 TimeSpan slut = TimeSpan.Parse(SluttidTextBox.Text);
 
                 Utrustning? valdUtrustning = utrustningComboBox.SelectedItem as Utrustning;
+                string deltagareInfo = deltagareTextbox.Text;
 
                 bool resultat = _bokningsController.SkapaBokning(
                     valdMedlem.MedlemID,
                     valdResurs.ResursID,
-                    valdUtrustning?.UtrustningID, 
+                    valdUtrustning?.UtrustningID,
+                    deltagareInfo, 
                     datum,
                     start,
                     slut,

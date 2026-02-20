@@ -21,9 +21,7 @@ namespace OOSU2_VT26_Grupp_07
         public MainWindow()
         {
             InitializeComponent();
-
         }
-
         private void loggaInButton_Click(object sender, RoutedEventArgs e)
         {
             using var uow = new UnitOfWork();

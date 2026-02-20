@@ -20,13 +20,13 @@
         <TextBlock Text="Registrera Ny Bokning" FontSize="30" Margin="0,0,0,20" Grid.Row="0"/>
 
         <StackPanel Grid.Row="1" Margin="0,5">
-            <TextBlock Text="Resurs (ID):"/>
-            <TextBox x:Name="ResursIDTextBox" Margin="0,5"/>
+            <TextBlock Text="Välj Resurs:"/>
+            <ComboBox x:Name="resursComboBox" DisplayMemberPath="Namn" Margin="0,5"/>
         </StackPanel>
 
         <StackPanel Grid.Row="2" Margin="0,5">
-            <TextBlock Text="Medlem (ID):"/>
-            <TextBox x:Name="MedlemsIDTextBox" Margin="0,5"/>
+            <TextBlock Text="Välj Medlem:"/>
+            <ComboBox x:Name="medlemComboBox" DisplayMemberPath="Namn" Margin="0,5"/>
         </StackPanel>
 
         <StackPanel Grid.Row="3" Margin="0,5">

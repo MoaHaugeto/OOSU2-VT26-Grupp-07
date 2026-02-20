@@ -37,10 +37,7 @@ namespace OOSU2_VT26_Grupp_07.Datalager
         {
             modelBuilder.Entity<Bokning>()
                 .HasIndex(b => new { b.ResursID, b.Datum, b.Starttid, b.Sluttid })
-                .IsUnique();            
-            
-            //base.OnModelCreating(modelBuilder);
-
+                .IsUnique();                        
 
         }
     }

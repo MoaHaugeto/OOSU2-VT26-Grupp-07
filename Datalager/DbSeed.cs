@@ -21,7 +21,7 @@ namespace OOSU2_VT26_Grupp_07.Datalager
             _db.Personaler.Add(new Personal { Namn = "Sara Lindgren", Roll = "Administratör", Losenord = "Admin123!" });
             _db.Personaler.Add(new Personal { Namn = "Johan Karlsson", Roll = "Receptionist", Losenord = "Rec2024!" });
             _db.Personaler.Add(new Personal { Namn = "Elin Persson", Roll = "Instruktör", Losenord = "Traning#1" });
-            _db.Personaler.Add(new Personal { Namn = "Markus Svensson", Roll = "Systemansvarig", Losenord = "Sys@456" });
+            _db.Personaler.Add(new Personal { Namn = "Markus Svensson", Roll = "Systemansvarig", Losenord = "Sys@456" });         
 
             // MEDLEMMAR
             _db.Medlemmar.Add(new Medlem { Namn = "Anna Andersson", Telefonnummer = "0701234567", Email = "anna@email.se", MedlemskapsNivå = "Fast", Betalstatus = "Betald" });
@@ -36,18 +36,14 @@ namespace OOSU2_VT26_Grupp_07.Datalager
 
             _db.SaveChanges();
 
-            //Vi har hådkodat dessa nedanför för att konu koppla dem till specifika utrustningar/bokningar/betalningar
+            //Vi har hådkodat dessa nedanför för att kunna koppla dem till specifika utrustningar/bokningar/betalningar
 
             Medlem anna = _db.Medlemmar.First(m => m.Namn == "Anna Andersson");
             Medlem erik = _db.Medlemmar.First(m => m.Namn == "Erik Eriksson");
 
             Resurs a01 = _db.Resurser.First(r => r.Namn == "A01");
             Resurs b01 = _db.Resurser.First(r => r.Namn == "B01");
-            Resurs c01 = _db.Resurser.First(r => r.Namn == "C01");
-
-
-            //var medlem = _db.Medlemmar.First();
-            //var resurs = _db.Resurser.First();
+            Resurs c01 = _db.Resurser.First(r => r.Namn == "C01");          
 
             // UTRUSTNING
             _db.Utrustningar.Add(new Utrustning { ResursID = a01.ResursID, ArtikelNamn = "Epson Projektor", Kategori = "Projektor", Skick = "Bra" });
@@ -62,8 +58,6 @@ namespace OOSU2_VT26_Grupp_07.Datalager
             // BETALNINGAR
             _db.Betalningar.Add(new Betalning { MedlemID = anna.MedlemID, Köpdatum = DateTime.Now, Belopp = 250, Forfallodatum = DateTime.Now.AddMonths(1), BataldDatum = DateTime.Now, Status = "Betald" });
             _db.Betalningar.Add(new Betalning { MedlemID = erik.MedlemID, Köpdatum = DateTime.Now, Belopp = 150, Forfallodatum = DateTime.Now.AddMonths(1), BataldDatum = DateTime.Now, Status = "Obetald" });
-
-
 
             _db.SaveChanges();
 

@@ -1,5 +1,6 @@
 ﻿using OOSU2_VT26_Grupp_07.Controller;
 using OOSU2_VT26_Grupp_07.Datalager;
+using OOSU2_VT26_Grupp_07.Entiteter;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,31 +23,44 @@ namespace OOSU2_VT26_Grupp_07.Presentationslager_WPF_
     public partial class RegistreraResursbokning : Window
     {
         private readonly UnitOfWork _uow;
-        private readonly BokningsController _controller;
+        private readonly BokningsController _bokningsController;
+        private readonly MedlemsController _medlemsController;
+        private readonly ResursController _resursController;
         public RegistreraResursbokning()
         {
             InitializeComponent();
             _uow = new UnitOfWork();
-            _controller = new BokningsController(_uow);
+            _bokningsController = new BokningsController(_uow);
+            _medlemsController = new MedlemsController(_uow);
+            _resursController = new ResursController(_uow);          
 
             // Sätt dagens datum som standardval
             BokningsdatumPicker.SelectedDate = DateTime.Now;
+            LaddaData();
+        }
+        private void LaddaData()
+        {
+            // Hämta alla medlemmar som vanligt
+            medlemComboBox.ItemsSource = _medlemsController.HämtaAllaMedlemmar();
+
+            // Anropa den nya metoden som bara returnerar tillgängliga resurser
+            resursComboBox.ItemsSource = _resursController.HämtaTillgängligaResurser();
         }
 
         private void registreraBokningButton_Click(object sender, RoutedEventArgs e)
         {
             try
             {
-                // Validering av numeriska ID-fält
-                if (!int.TryParse(ResursIDTextBox.Text, out int resursId))
+                // Kontrollera att användaren valt något i rullistorna
+                if (resursComboBox.SelectedItem is not Resurs valdResurs)
                 {
-                    MessageBox.Show("ResursID måste vara en siffra.");
+                    MessageBox.Show("Vänligen välj en resurs.");
                     return;
                 }
 
-                if (!int.TryParse(MedlemsIDTextBox.Text, out int medlemsId))
+                if (medlemComboBox.SelectedItem is not Medlem valdMedlem)
                 {
-                    MessageBox.Show("MedlemsID måste vara en siffra.");
+                    MessageBox.Show("Vänligen välj en medlem.");
                     return;
                 }
 
@@ -60,10 +74,9 @@ namespace OOSU2_VT26_Grupp_07.Presentationslager_WPF_
                 TimeSpan start = TimeSpan.Parse(StarttidTextBox.Text);
                 TimeSpan slut = TimeSpan.Parse(SluttidTextBox.Text);
 
-                // Anropa controllern för att skapa bokningen och hantera krockkontroll
-                bool resultat = _controller.SkapaBokning(
-                    medlemsId,
-                    resursId,
+                bool resultat = _bokningsController.SkapaBokning(
+                    valdMedlem.MedlemID,
+                    valdResurs.ResursID,
                     datum,
                     start,
                     slut,

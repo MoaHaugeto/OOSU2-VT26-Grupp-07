@@ -45,6 +45,6 @@
                 Margin="5" Click="loggaInButton_Click"/>
 
         <Image Grid.Row="1" Grid.Column="4" Grid.RowSpan="6" 
-               Source="F:\Downloads\streckgubbe.png"/>
+               Source="F:\Desktop\download.png"/>
     </Grid>
 </Window>

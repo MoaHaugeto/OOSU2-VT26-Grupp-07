@@ -14,6 +14,8 @@ namespace OOSU2_VT26_Grupp_07.Entiteter
         public Medlem Medlem { get; set; }
         public int ResursID { get; set; }
         public Resurs Resurs { get; set; }
+        public int? UtrustningID { get; set; }
+        public virtual Utrustning? Utrustning { get; set; }
 
         public TimeSpan Starttid { get; set; }
         public TimeSpan Sluttid { get; set; }

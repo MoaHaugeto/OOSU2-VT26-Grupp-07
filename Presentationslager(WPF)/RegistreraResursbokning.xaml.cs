@@ -46,6 +46,15 @@ namespace OOSU2_VT26_Grupp_07.Presentationslager_WPF_
             // Anropa den nya metoden som bara returnerar tillgängliga resurser
             resursComboBox.ItemsSource = _resursController.HämtaTillgängligaResurser();
         }
+        private void resursComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (resursComboBox.SelectedItem is Resurs valdResurs)
+            {
+                // Hämtar utrustning som tillhör den valda resursen via Repositoryt
+                var tillhörandeUtrustning = _uow.UtrustningRepository.Find(u => u.ResursID == valdResurs.ResursID).ToList();
+                utrustningComboBox.ItemsSource = tillhörandeUtrustning;
+            }
+        }
 
         private void registreraBokningButton_Click(object sender, RoutedEventArgs e)
         {
@@ -74,9 +83,12 @@ namespace OOSU2_VT26_Grupp_07.Presentationslager_WPF_
                 TimeSpan start = TimeSpan.Parse(StarttidTextBox.Text);
                 TimeSpan slut = TimeSpan.Parse(SluttidTextBox.Text);
 
+                Utrustning? valdUtrustning = utrustningComboBox.SelectedItem as Utrustning;
+
                 bool resultat = _bokningsController.SkapaBokning(
                     valdMedlem.MedlemID,
                     valdResurs.ResursID,
+                    valdUtrustning?.UtrustningID, 
                     datum,
                     start,
                     slut,
@@ -88,6 +100,9 @@ namespace OOSU2_VT26_Grupp_07.Presentationslager_WPF_
                     MessageBox.Show(felmeddelande);
                     return;
                 }
+                string info = valdUtrustning != null
+                    ? $"\nBokad utrustning: {valdUtrustning.ArtikelNamn}"
+                    : "";
 
                 MessageBox.Show("Bokningen har registrerats!");
                 _uow.Dispose();

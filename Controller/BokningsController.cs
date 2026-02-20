@@ -22,7 +22,7 @@ namespace OOSU2_VT26_Grupp_07.Controller
             return _uow.BokningRepository.GetAll().ToList();
         }
 
-        public bool SkapaBokning(int medlemId, int resursId, DateTime datum, TimeSpan start, TimeSpan slut, out string fel)
+        public bool SkapaBokning(int medlemId, int resursId, int? utrustningId,DateTime datum, TimeSpan start, TimeSpan slut, out string fel)
         {
             fel = "";
 
@@ -49,6 +49,7 @@ namespace OOSU2_VT26_Grupp_07.Controller
             {
                 MedlemID = medlemId,
                 ResursID = resursId,
+                UtrustningID = utrustningId, 
                 Datum = datum,
                 Starttid = start,
                 Sluttid = slut

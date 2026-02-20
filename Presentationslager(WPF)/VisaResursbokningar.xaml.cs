@@ -1,5 +1,6 @@
 ﻿using OOSU2_VT26_Grupp_07.Controller;
 using OOSU2_VT26_Grupp_07.Datalager;
+using OOSU2_VT26_Grupp_07.Entiteter;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -34,11 +35,19 @@ namespace OOSU2_VT26_Grupp_07.Presentationslager_WPF_
         }
         private void LaddaBokningar()
         {
-            // Hämtar listan via controllern som anropar BokningRepository
-            var bokningsLista = _controller.HämtaAllaBokningar();
+            try
+            {
+                // Hämtar bokningar via controllern
+                var bokningsLista = _controller.HämtaAllaBokningar();
 
-            // Koppla listan till DataGrids ItemsSource
-            bokningarDataGrid.ItemsSource = bokningsLista;
+                // Koppla listan till DataGrid
+                bokningarDataGrid.ItemsSource = bokningsLista;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Kunde inte ladda bokningar: " + ex.Message);
+            }
+
         }
         private void tillbakaButton_Click(object sender, RoutedEventArgs e)
         {
